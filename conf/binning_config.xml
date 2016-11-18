@@ -1,0 +1,86 @@
+<config>
+    <binning>
+        <discrete>false</discrete>
+        <sampling>1000</sampling>
+        <min_size>0</min_size>
+        <max_size>50000</max_size>
+        <bin_sizes>
+            <size>100</size>
+            <size>200</size>
+            <size>300</size>
+            <size>400</size>
+        </bin_sizes>
+    </binning>
+    <queries>
+        <query>
+            <qtype>JOIN</qtype>
+            <dle>500</dle>
+            <dge>100</dge>
+        </query>
+    </queries>
+    <datasets>
+
+        <dataset name="REF">
+            <chrom_length>4000000</chrom_length>
+            <samples>
+                <sample>
+                    <reg_length_avg>  200    </reg_length_avg>
+                    <reg_length_std>  0.001  </reg_length_std>
+                    <dist_avg>        100    </dist_avg>
+                    <dist_std>        1      </dist_std>
+                    <num_reg_max>     400000    </num_reg_max>
+                    <min_val>         0.0    </min_val>
+                    <max_val>         1.0    </max_val>
+                    <num_meta>        1      </num_meta>
+                </sample>
+                <!--sample>
+                <reg_length_avg>  299  </reg_length_avg>
+                <reg_length_std>  0.001   </reg_length_std>
+                <dist_avg>        20  </dist_avg>
+                <dist_std>        4    </dist_std>
+                <num_reg_max>     100  </num_reg_max>
+                <min_val>         0.0    </min_val>
+                <max_val>         1.0    </max_val>
+            </sample-->
+            </samples>
+        </dataset>
+
+        <dataset name="EXP">
+            <chrom_length>4000000</chrom_length>
+            <samples>
+                <sample>
+                    <reg_length_avg>  200    </reg_length_avg>
+                    <reg_length_std>  0.001   </reg_length_std>
+                    <dist_avg>        150    </dist_avg>
+                    <dist_std>        1      </dist_std>
+                    <num_reg_max>     400000    </num_reg_max>
+                    <min_val>         0.0    </min_val>
+                    <max_val>         1.0    </max_val>
+                    <num_meta>        1      </num_meta>
+                </sample>
+                <!--sample>
+                    <reg_length_avg>  388  </reg_length_avg>
+                    <reg_length_std>  0.001  </reg_length_std>
+                    <dist_avg>        20  </dist_avg>
+                    <dist_std>        4    </dist_std>
+                    <num_reg_max>     100  </num_reg_max>
+                    <min_val>         0.0    </min_val>
+                    <max_val>         1.0    </max_val>
+                    <num_meta>        3      </num_meta>
+                </sample-->
+            </samples>
+        </dataset>
+    </datasets>
+    <environment>
+        <type>LOCAL</type>
+
+        <root_folder_local>/Users/andreagulino/Desktop/test/</root_folder_local>
+
+        <test_folder_name>binning_test</test_folder_name>
+        <data_folder_name>data</data_folder_name>
+        <out_folder_name>out</out_folder_name>
+        <log_folder_name>logs</log_folder_name>
+        <results_folder_name>results</results_folder_name>
+
+    </environment>
+</config>
