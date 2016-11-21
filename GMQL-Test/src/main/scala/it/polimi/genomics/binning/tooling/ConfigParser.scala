@@ -134,7 +134,7 @@ object ConfigParser {
   def getQueriesConfigs(xmlPath:String): Array[QueryConfig] = {
 
     val xml = XML.loadFile(xmlPath)
-    val queries:NodeSeq = (xml \\ "queries")
+    val queries:NodeSeq = (xml \\ "queries" \\ "query")
     val queriesConfigs: Array[QueryConfig] = new Array[QueryConfig](queries.size)
 
     for( queryN <- 0 to queries.size - 1){

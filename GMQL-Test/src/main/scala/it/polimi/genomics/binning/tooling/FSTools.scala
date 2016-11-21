@@ -111,37 +111,42 @@ object FSTools {
   }
 
   private def getHDFSRootURI: String = {
-    val pre  = utilities.gethdfsConfiguration().get("fs.defaultFS")
+    var pre  = utilities.gethdfsConfiguration().get("fs.defaultFS")
     val user = System.getenv("USER");
+
+    if( (pre takeRight 1) != "/" ) {
+       pre = pre + "/"
+    }
     val uri = pre+"user/"+user+"/"
     return uri
   }
 
+ls
 
   def clean_outputs():Unit = {
-    val dir : File = new File(testPath_local+envConfig.OUT_FOLDER_NAME+"/")
-    if (dir.exists() && !dir.isDirectory) {
-      dir.delete()
-    }
-    else if (dir.exists()) {
-      FileUtils.deleteDirectory(dir)
-    }
-    dir.mkdir()
 
     if( envConfig.TYPE == "CLUSTER" ) {
       println("Deleting outpath")
       utilities.deleteDFSDir(outPath)
       //utilities.createDirHDFS(outPath)
+    } else {
+      val dir : File = new File(testPath_local+envConfig.OUT_FOLDER_NAME+"/")
+      if (dir.exists() && !dir.isDirectory) {
+        dir.delete()
+      }
+      else if (dir.exists()) {
+        FileUtils.deleteDirectory(dir)
+      }
     }
 
   }
 
   def getOutputPath : String  = {
-      if( envConfig.TYPE equals "CLUSTER" ) {
-        return getHDFSRootURI+outPath
-      } else {
-        return outPath
-      }
+    if( envConfig.TYPE equals "CLUSTER" ) {
+      return getHDFSRootURI+outPath
+    } else {
+      return outPath
+    }
   }
 
   def storeSample(dsName: String, sampleN: Int,  regions:List[String], meta:List[String]) : Unit = {
@@ -174,9 +179,14 @@ object FSTools {
       utilities.deleteDFSDir(testPath_cluster)
     }
 
-    println("Cleaning local fs")
+    println("Cleaning local fs test folder: "+testPath_local)
     val dir : File = new File(testPath_local)
-    dir.delete()
+    if (dir.exists() && !dir.isDirectory) {
+      dir.delete()
+    }
+    else if (dir.exists()) {
+      FileUtils.deleteDirectory(dir)
+    }
 
 
   }

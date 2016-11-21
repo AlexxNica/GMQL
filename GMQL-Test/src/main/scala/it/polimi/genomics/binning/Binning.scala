@@ -190,7 +190,7 @@ object Binning {
 
     // STORING RESULTS
 
-    // Results to XML
+    // Results to XMLx
     ResultBuilder.buildResult(output_queries, xmlPath )
 
     // Cleaning folders
